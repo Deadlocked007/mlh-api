@@ -2,7 +2,7 @@
 from flask import Flask, jsonify
 from bs4 import BeautifulSoup
 import requests, time
-import urllib
+import urllib3
 import datetime
 
 app = Flask(__name__)
@@ -100,4 +100,7 @@ def search_by_key(mlh_event, key_):
                     return eu_event[i][key_]
 
 
-app.run()
+if __name__ == '__main__':
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
