@@ -52,7 +52,6 @@ def request_stuff(season, events):
             events[event_head] = event
     
 
-@app.route('/')
 def index():
     us_event = {}
     request_stuff("s" + year, us_event)
