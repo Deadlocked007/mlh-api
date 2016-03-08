@@ -51,7 +51,7 @@ def request_stuff(season, events):
             event["id"] = event_id
             events[event_head] = event
     
-
+@app.route('/')
 def index():
     us_event = {}
     request_stuff("s" + year, us_event)
@@ -100,6 +100,4 @@ def search_by_key(mlh_event, key_):
                     return eu_event[i][key_]
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=50981
-    )
+app.run()
