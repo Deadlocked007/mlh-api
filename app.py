@@ -1,4 +1,4 @@
-#!flask/bin/python
+import os
 from flask import Flask, jsonify
 from bs4 import BeautifulSoup
 import requests, time
