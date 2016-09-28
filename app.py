@@ -12,7 +12,8 @@ def request_stuff(season, events):
     mlh_url = "https://mlh.io/seasons/%s/events" % (season)
     mlh_html = requests.get(mlh_url)
     soup = BeautifulSoup(mlh_html.content)
-    event_list = soup.find_all('div', {'class':'col-lg-3'})
+    # class col-lg-3
+    event_list = soup.find_all('div', {'itemtype':'http://schema.org/Event'})
     for event_for in event_list:
         event_id = str(event_for)
         event_id = event_id[(event_id.find("event")+12):(event_id.find("event")+15)]
