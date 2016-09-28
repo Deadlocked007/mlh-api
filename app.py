@@ -32,15 +32,15 @@ def request_stuff(season, events):
             event_logo = ""
             
             event_image = str(event_for.find_all('img'))
-            index = event_image.find("src=\"") + 1
+            index = event_image.find("src=\"") + 5
             event_image = event_image[index:]
-            index = event_image.find("\">")
+            index = event_image.find('"')
             event_image = event_image[:index]
             
             event_logo = str(event_for.find_all('img')[1])
-            index = event_logo.find("src=\"") + 1
+            index = event_logo.find("src=\"") + 5
             event_logo = event_logo[index:]
-            index = event_logo.find("\">")
+            index = event_logo.find('"')
             event_logo = event_logo[:index]
 
             event_head = str(event_for.find_all('h3'))
