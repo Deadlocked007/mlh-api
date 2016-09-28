@@ -67,8 +67,14 @@ def request_stuff(season, events):
             index = event_loc.find("<")
             event_loc = event_loc[:index]
             
+            event_loc2 = str(event_for.find_all('span')[1])
+            index = event_loc2.find(">") + 1
+            event_loc2 = event_loc2[index:]
+            index = event_loc2.find("<")
+            event_loc2 = event_loc2[:index]
+            
             event = {}
-            event["location"] = event_loc
+            event["location"] = event_loc + ", " + event_loc2
             event["date"] = event_date
             event["name"] = event_head
             event["link"] = link
