@@ -30,24 +30,18 @@ def request_stuff(season, events):
             counter = 1
             event_image = ""
             event_logo = ""
-            for image in images:
-                if counter == 1:
-                    event_image = str(image)
-                    index = event_image.find("src")
-                    event_image = event_image[index:]
-                    index = event_image.find('"') + 1
-                    event_image = event_image[index:]
-                    index = event_image.find('"')
-                    event_image = event_image[:index]
-                    counter += 1
-                else:
-                    event_logo = str(image)
-                    index = event_logo.find("src")
-                    event_logo = event_logo[index:]
-                    index = event_logo.find('"') + 1
-                    event_logo = event_logo[index:]
-                    index = event_logo.find('"')
-                    event_logo = event_logo[:index]
+            
+            event_image = str(event_for.find_all('img'))
+            index = event_image.find("src=\"") + 1
+            event_image = event_image[index:]
+            index = event_image.find("\">")
+            event_image = event_image[:index]
+            
+            event_logo = str(event_for.find_all('img')[1])
+            index = event_logo.find("src=\"") + 1
+            event_logo = event_logo[index:]
+            index = event_logo.find("\">")
+            event_logo = event_logo[:index]
 
             event_head = str(event_for.find_all('h3'))
             index = event_head.find(">") + 1
