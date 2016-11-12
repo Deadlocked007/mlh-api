@@ -82,7 +82,7 @@ def request_stuff(season, events):
                 failure = 'Address not found'
                 if result != failure:
                     event["lat"] = result["lat"]
-                    event["lng"] = result ["lat"]
+                    event["lng"] = result ["lng"]
                 event["date"] = event_date
                 event["name"] = event_head
                 event["link"] = link
