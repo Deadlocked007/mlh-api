@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import requests, time
 import urllib
 import datetime
+from rapidconnect import RapidConnect
+rapid = RapidConnect('HackHunt', 'b575baee-8f4b-44d7-acd9-f399e1ca3b95');
 
 app = Flask(__name__)
 year = str(datetime.date.today().year)
@@ -11,7 +13,7 @@ year = str(datetime.date.today().year)
 def request_stuff(season, events):
     mlh_url = "https://mlh.io/seasons/%s/events" % (season)
     mlh_html = requests.get(mlh_url)
-    soup = BeautifulSoup(mlh_html.content)
+    soup = BeautifulSoup(mlh_html.content, "html.parser")
     # class col-lg-3
     event_list = soup.find_all('div', {'itemtype':'http://schema.org/Event'})
     for event_for in event_list:
@@ -69,6 +71,15 @@ def request_stuff(season, events):
             
             event = {}
             event["location"] = event_loc + ", " + event_loc2
+            result = rapid.call('GoogleGeocodingAPI', 'addressToCoordinates', {
+                                'address': event["location"],
+                                'apiKey': 'AIzaSyBSJ2q4eACZKJ8Pt_UEu_RSbJo_D6JLwJI'
+                                
+                                });
+            failure = 'Address not found'
+            if result != failure:
+                event["lat"] = result["lat"]
+                event["lng"] = result ["lat"]
             event["date"] = event_date
             event["name"] = event_head
             event["link"] = link
