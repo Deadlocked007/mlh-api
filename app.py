@@ -103,6 +103,12 @@ def index():
 
 @app.route('/<string:mlh_season>/')
 def select_season(mlh_season):
+    if mlh_season[:2] == 'na':
+        events_all = us_event
+    elif mlh_season[:2] == 'eu':
+        events_all = eu_event
+    else:
+        events_all = {}
     while True:
         request_stuff(mlh_season, events_all)
         return jsonify(events_all)
