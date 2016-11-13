@@ -74,15 +74,15 @@ def request_stuff(season, events):
             
                 event = {}
                 event["location"] = event_loc + ", " + event_loc2
-                result = rapid.call('GoogleGeocodingAPI', 'addressToCoordinates', {
-                                'address': event["location"],
-                                'apiKey': 'AIzaSyBSJ2q4eACZKJ8Pt_UEu_RSbJo_D6JLwJI'
+                    #result = rapid.call('GoogleGeocodingAPI', 'addressToCoordinates', {
+                    #          'address': event["location"],
+                    #           'apiKey': 'AIzaSyBSJ2q4eACZKJ8Pt_UEu_RSbJo_D6JLwJI'
                                 
-                });
+                                #});
                 failure = 'Address not found'
-                if result != failure:
-                    event["lat"] = result["lat"]
-                    event["lng"] = result ["lng"]
+                    #if result != failure:
+                    #  event["lat"] = result["lat"]
+                    #   event["lng"] = result ["lng"]
                 event["date"] = event_date
                 event["name"] = event_head
                 event["link"] = link
