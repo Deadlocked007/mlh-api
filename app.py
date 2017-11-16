@@ -26,7 +26,7 @@ def request_stuff(season, events):
                 pass
             else:
                 link_tag = str(event_for.find_all('a'))
-                index = link_tag.find('"') +  1
+                index = link_tag.find("href=\"") + 6
                 link = link_tag[index:]
                 index = link.find('"')
                 link = link[:index]
